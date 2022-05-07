@@ -1,9 +1,9 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/Layout"
-import Seo from "../components/seo"
-import PostItem from "../components/PostItem"
+import Layout from "../src/components/Layout"
+import Seo from "../src/components/seo"
+import PostItem from "../src/components/PostItem"
 
 const IndexPage = () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
