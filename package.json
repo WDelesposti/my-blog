@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "algoliasearch": "^4.13.0",
     "dotenv": "^16.0.1",
     "gatsby": "^4.13.0",
     "gatsby-image": "^3.11.0",
@@ -30,6 +31,7 @@
     "react-disqus-comments": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-instantsearch-dom": "^6.24.3",
     "styled-components": "^5.3.5",
     "styled-icons": "^10.45.0"
   },
