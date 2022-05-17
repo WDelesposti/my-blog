@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
@@ -13,7 +12,7 @@ export default function HTML(props) {
         />
         {props.headComponents}
       </head>
-      <body {...props.bodyAttributes} className="light">
+      <body {...props.bodyAttributes} className="dark">
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -36,6 +35,24 @@ export default function HTML(props) {
                 } catch (err) {}
               }
               setTheme(preferredTheme || 'dark');
+              window.__onDisplayChange = function() {};
+              function setDisplay(newDisplay) {
+                window.__display = newDisplay;
+                preferredDisplay = newDisplay;
+                document.body.id = newDisplay;
+                window.__onDisplayChange(newDisplay);
+              }
+              var preferredDisplay;
+              try {
+                preferredDisplay = localStorage.getItem('display');
+              } catch (err) { }
+              window.__setPreferredDisplay = function(newDisplay) {
+                setDisplay(newDisplay);
+                try {
+                  localStorage.setItem('display', newDisplay);
+                } catch (err) {}
+              }
+              setDisplay(preferredDisplay || 'list');
             })();
           `,
           }}
@@ -54,7 +71,6 @@ export default function HTML(props) {
     </html>
   )
 }
-
 HTML.propTypes = {
   htmlAttributes: PropTypes.object,
   headComponents: PropTypes.array,
